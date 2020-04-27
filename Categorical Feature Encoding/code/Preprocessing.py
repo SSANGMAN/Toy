@@ -36,7 +36,7 @@ class Dataset:
 
             for col in X_train.columns:
                 X_train[col] = label_encoder.fit_transform(X_train[col])
-                X_val[col] = label_encoder.fit_transform(X_train[col])
+                X_val[col] = label_encoder.fit_transform(X_val[col])
 
             if train == True:
                 print("Train Data Shape : {} Rows, {} Columns".format(X_train.shape[0], X_train.shape[1]))
@@ -85,12 +85,11 @@ class Dataset:
 
         if self.train == True:
             for col in self.X_train.columns:
-                if self.X_train[col].dtype == 'object':
                     self.X_train[col] = self.X_train[col].astype('str')
 
-            train_df = hashing_encoder.fit_transform(self.X_train)
+            train_df = hashing_encoder.fit_transform(self.X_train.values)
 
-            X_train, X_val, y_train, y_val = train_test_split(train_df, self.ylabel, test_size = test_size, random_state = 42)
+            X_train, X_val, y_train, y_val = train_test_split(train_df, self.y_train, test_size = test_size, random_state = 42)
             
             if train == True:
                 print("Train Data Shape : {} Rows, {} Columns".format(X_train.shape[0], X_train.shape[1]))

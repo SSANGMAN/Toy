@@ -37,6 +37,6 @@ Thumbs.db
 ####################
 *.code-workspace
 
-.ipynb_checkpoints/
-.__pycache__/
+./Categorical Feature Encoding/ipynb/ipynb_checkpoints/
+./Categorical Feature Encoding/code/__pycache__/
 .Reference/
