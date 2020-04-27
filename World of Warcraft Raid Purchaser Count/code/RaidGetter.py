@@ -9,13 +9,13 @@ from tkinter import *
 import tkinter as tk
 import tkinter.messagebox
 import datetime
-import time
+import datetime
 
 class Title:
     def __init__(self, where):
         self.buttonframe = Frame(where)
         
-        self.label = Label(self.buttonframe, font = 2, text = "레이드 득자 처리 프로그램 ver 0.1(Test)", width = 40, height = 1)
+        self.label = Label(self.buttonframe, font = 2, text = "레이드 득자 처리 프로그램 ver 0.2(Test)", width = 40, height = 1)
         self.label.config(fg = 'blue', anchor = N)
         self.label.pack()
         
@@ -67,9 +67,11 @@ class Buttons:
         self.reset_button.pack(side = LEFT, padx = 5)
         
         self.getter_list = Listbox(self.buttonframe, selectmode = 'single', width = 45, height = 10)
-        
         self.getter_list.pack(side = BOTTOM, padx = 10, pady = 10)
-        
+
+        self.fixed_raider_button = Button(self.buttonframe, text = "공격대 인원 결정")
+        self.fixed_raider_button.pack(side = LEFT, padx = 10)
+
     def update(self):
         self.getter_list.insert(END, self.name.get())
         tkinter.messagebox.showinfo("득자 추가", "득자 추가 완료!\n갱신 시간: {}".format(datetime.datetime.now()))
@@ -91,33 +93,19 @@ class Buttons:
         
     def output(self):
         output_list = self.getter_list.get(0, 'end')
+        now = datetime.datetime.now()
         
-        with open('./getter_list.txt', 'w') as f:
+        year = now.year
+        month = now.month
+        day = now.day
+
+        with open('./result_example/{}{}{}.txt'.format(year, month, day), 'w') as f:
 
             f.write('득자: {}'.format(set(output_list)))
             f.write(', 총 {} 명'.format(len(set(output_list))))
             f.close()
             
         tkinter.messagebox.showinfo("출력", "출력 완료!\n출력 시간: {}\n 파일 경로를 확인해주세요!".format(datetime.datetime.now()))
-
-class Getterlist:
-    def __init__(self, getter):
-        self.getter = getter
-        
-    def list_frame(self):
-        self.buttonframe = Frame(self.getter)
-        self.buttonframe.pack(side = LEFT, fill = X, anchor = N)
-        
-        self.scrollbar = Scrollbar(self.buttonframe)
-        self.scrollbar.pack(side = LEFT, fill = Y)
-        
-        self.listbox = Listbox(self.buttonframe, yscrollcommand = self.scrollbar.set, bg = "white", width = 30, height = 15)
-        self.listbox.pack(side = LEFT)
-        self.scrollbar.config(command = self.listbox.yview)
-        
-    def message_dis(self, msg):
-        self.listbox.insert(END, msg)
-
 
 def main():
     root = Tk()
@@ -132,6 +120,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-        
-
-
