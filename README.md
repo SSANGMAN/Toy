@@ -43,3 +43,4 @@ A common method for encoding cyclical data is to transform the data into two dim
         - C = 0.1
 
 ### Result
+<img src="https://github.com/SSANGMAN/Toy/blob/master/Categorical%20Feature%20Encoding/asset/comparision.png?raw=true" width = "400">
