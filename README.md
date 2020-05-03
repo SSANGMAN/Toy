@@ -1,6 +1,10 @@
 # Toy
 Short-term Toy Project
 
+
+## AB TEST
+[Document](https://www.notion.so/A-B-Test-5b6bfcf642eb4b92bd7d4328cb321959)
+
 ## World of Warcraft Raid Purchaser Count
 The World of Warcraft Korean Realms raid parties are mostly goal parties. Dungeon, which has a low distribution amount, is a structure in which players cannot receive gold when they acquire items, and it is a project that is carried out to classify them easily. this project based on Python tkinter library. It will be updated periodically.
 
